@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="websocket_port" default="9090"/>
+
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+        <arg name="port" value="$(arg websocket_port)" />
+        <arg name="address" default="127.0.0.1" />
+        <arg name="ssl" default="false" />
+        <arg name="certfile" default=""/>
+        <arg name="keyfile" default="" />
+
+        <arg name="retry_startup_delay" default="5" />
+
+        <arg name="fragment_timeout" default="600" />
+        <arg name="delay_between_messages" default="0" />
+        <arg name="max_message_size" default="None" />
+        <arg name="unregister_timeout" default="10" />
+        <arg name="websocket_external_port" default="8888" />
+
+        <arg name="use_compression" default="false" />
+
+        <arg name="authenticate" default="false" />
+        <arg name="websocket_ping_interval" default="15" />
+        <arg name="websocket_ping_timeout" default="15" />
+        <arg name="websocket_null_origin" default="true" />
+  </include>
+
+
+    <node pkg="next_text_ai"
+          type="gtts_node.py"
+          name="gtts_action_server"
+          output="screen"
+          launch-prefix="/usr/bin/python3.8"/>
+
+
+
+</launch>

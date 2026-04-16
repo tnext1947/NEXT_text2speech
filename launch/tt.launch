@@ -1,0 +1,17 @@
+<launch>
+
+    <!-- Forwarder: ROS Node (Python 3.8) -->
+    <node pkg="next_text_ai"
+          type="robot.py"
+          name="tts_forwarder"
+          output="screen"
+          launch-prefix="/usr/bin/python3.8" />
+
+    <!-- Worker: Vachana TTS (Python 3.10 via pyenv) -->
+    <node pkg="next_text_ai"
+          type="vachanatts_node.py"
+          name="tts_worker"
+          output="screen"
+          launch-prefix="/home/ter/.pyenv/versions/3.10.12/bin/python3.10" />
+
+</launch>
